@@ -2,8 +2,7 @@
 diff --git a/app.py b/app.py
 --- a/app.py
 +++ b/app.py
-@@ -1,6 +1,6 @@
-@@
+@@ -27,13 +27,5 @@
 -    if VULNERABLE:
 -        # Уязвимый вариант для демонстрации SQL Injection
 -        sql = (
@@ -17,8 +16,7 @@ diff --git a/app.py b/app.py
 -            "SELECT * FROM products WHERE name LIKE ?",
 -            (f"%{query}%",)
 -        )
-+    # Исправление SQL Injection:
-+    # используем параметризованный SQL-запрос
++    # Исправление SQL Injection
 +    cursor.execute(
 +        "SELECT * FROM products WHERE name LIKE ?",
 +        (f"%{query}%",)
@@ -27,10 +25,14 @@ diff --git a/app.py b/app.py
 diff --git a/templates/hello.html b/templates/hello.html
 --- a/templates/hello.html
 +++ b/templates/hello.html
-@@
+@@ -8,9 +8,1 @@
+-    <h1>
+-        Привет,
 -        {% if vulnerable %}
 -            {{ name|safe }}
 -        {% else %}
 -            {{ name }}
 -        {% endif %}
-+        {{ name }}
+-        !
+-    </h1>
++    <h1>Привет, {{ name }}!</h1>
