@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск товаров</title>
+</head>
+<body>
+    <h1>Результаты поиска</h1>
+
+    <p>Ваш запрос: {{ query }}</p>
+
+    {% for product in products %}
+        <div>
+            <b>{{ product[1] }}</b>
+            — {{ product[2] }} руб.
+        </div>
+    {% else %}
+        <p>Товары не найдены</p>
+    {% endfor %}
+
+    <a href="/">Назад</a>
+</body>
+</html>
